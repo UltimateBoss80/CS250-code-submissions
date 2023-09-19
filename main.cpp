@@ -17,7 +17,7 @@ int main()
     double currentPop;
     double birthR;
     double deathR;
-    int ePop;
+    long long int ePop;
     double gRate;
     int years;
 
