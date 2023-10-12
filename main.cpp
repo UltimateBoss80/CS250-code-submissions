@@ -1,78 +1,37 @@
-// Description: Using functions to calculate growth rate and population after a certain amount of years.
-// Author: Jeremy White
-// Date: 9/17/2023
+//Description: Project 2
+//Author: Jeremy White
+//Date: 10/9/2023
 
 #include <iostream>
+#include "Person.h"
+#include "Student.h"
+#include "Professor.h"
+
+
 
 using namespace std;
 
-
-double GrowthRate(double, double);
-
-double EstimatedPop(double, double, double);
-
 int main()
 {
+    Person myPerson
+    myPerson("Marc");
 
-    double currentPop;
-    double birthR;
-    double deathR;
-    long long int ePop;
-    double gRate;
-    int years;
+    myCourses[]= {"CS250", "CS301", "CS270", "CS302", "Philosophy";}
+    Student cStudent;
+    cStudent("Jeremy White", myCourses, 5);
 
-    cout << "Enter starting population: ";
-    cin >> currentPop;
-    cout << endl;
-
-    cout << "Enter birth rate: ";
-    cin >> birthR;
-    cout << endl;
-
-    cout << "Enter death rate: ";
-    cin >> deathR;
-    cout << endl;
-
-    cout << "Enter number of years to project: ";
-    cin >> years;
-    cout << endl;
+    Professor myProfessor("Robert Vermilyer", "SG 4D")
 
 
-    if (birthR < 0 || deathR < 0 || currentPop < 2)
-    {
-        cout << "Error, invalid output. Birth rate, death rate has to be at least zero, and population has to be at least two, please try again";
-        return -1;
-    }
+    cout << "What's your name and courses you take?" << endl << "Me: " << myStudent.getName() << ", " << myStudent.getCourses() << endl << endl;
+    cout << "Counselor: Do you have a friend with the name starting with 'm'?" << endl << "Me: Yes I do actually, the name is " << myPerson.getName()
+    << endl << endl;
+    cout << "Counselor: What's the name and office location of one of your college professors?" << endl << "Me: " << myProfessor.getName() << ", " <<
+    myProfessor.getOffice() << endl << endl;
 
-
-    gRate = GrowthRate (birthR, deathR);
-    cout << "The population growth rate is: " << gRate << "%" << endl;
-
-    for (int i = 1; i<=years; i++)
-    {
-        ePop = EstimatedPop (currentPop, birthR, deathR);
-        cout << "Population after " << i << " year - " << ePop << endl;
-        currentPop = ePop;
-
-    }
+    myStudent.setCourses("Real Estate");
+    cout << "Updated courses: " << myStudent.getCourses();
 
     return 0;
 }
 
-
-double GrowthRate(double birthR, double deathR)
-{
-    double growthR;
-    growthR = birthR - deathR;
-    return growthR;
-
-}
-
-double EstimatedPop(double currentPop, double birthR, double deathR)
-{
-    double estimatePop;
-    estimatePop = (currentPop + (birthR * currentPop) / 100 - (deathR * currentPop) / 100);
-    return estimatePop;
-
-
-}
