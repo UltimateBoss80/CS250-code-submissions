@@ -1,60 +1,74 @@
+/*
+    This program illustrates the use of hash tables and files"
+    Jeremy White
+    12/3/2023
+*/
+
 #include <iostream>
-#include <stack>
-#include "EvenStack.h"
+#include "Dogs.h"
+
 
 using namespace std;
 
 int main()
 {
-    EvenStack myStack;
-    myStack.push(44);
-    myStack.push(66);
-    myStack.push(99);
-    myStack.push(88);
-    myStack.pop();
-    myStack.emptyStack();
+    try
 
-    stack <int> aStack;
-
-    aStack.push(2);
-    aStack.push(9);
-    aStack.push(6);
-    aStack.push(2);
-    aStack.push(3);
-    aStack.push(5);
-    aStack.push(4);
-
-    EvenStack newStack;
-    newStack.push(32);
-    newStack.getEvenNumbers(aStack);
-
-    cout << endl;
-
-    cout << "aStack has " << aStack.size() << " elements" << endl;
-
-    cout << "myStack has " << myStack.size() << " elements" << endl;
-
-    cout << "newStack has " << newStack.size() << " elements" << endl;
-
-    cout << endl;
-    while (!newStack.empty()) {
-       cout <<  newStack.top() << "  ";
-       newStack.pop();
-    }
-    cout << endl;
-
-/*
-    cout << "myStack has " << myStack.size() << " elements" << endl;
-    while (!myStack.empty())
     {
-        cout << myStack.top() << " ";
-        myStack.pop();
+        int choice;
+
+
+        Dogs dogs;
+        do
+        {
+            cout << "Select 1 to see total number of dogs in the world."<< endl;
+            cout << "Select 2 to find out how many dogs are in a specific country." << endl;
+            cout << "Select 3 to quit." << endl;
+            cin >> choice;
+
+            switch (choice)
+            {
+
+                case 1:
+                    cout << dogs.getDogPop() << " dogs in the world" << endl;
+                    break;
+
+                case 2:
+                    string country;
+                    cout << "Enter country: ";
+                    cin >> country;
+
+                    if (dogs.countryAvailable(country))
+                    {
+                        cout << dogs.getCountryPop(country) << " dogs in " << country << endl;
+                    }
+                    else
+                    {
+                        throw "Country not found";
+                    }
+                    break;
+                case 3:
+                    break;
+
+                default:
+                    cout << "Invalid choice" << endl;
+
+            }
+
+        }while (choice != 3);
+
+
+
     }
 
-*/
+    catch (const char *msg)
+    {
+        cout << msg << endl;
+    }
+
+
     return 0;
+
+
+
 }
-
-
-
-
